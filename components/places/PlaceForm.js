@@ -25,8 +25,8 @@ function PlaceForm() {
 
   function savePlaceHandler() {
     console.log(enteredTitle);
-    // console.log(selectedImage);
-    // console.log(pickedLocation);
+    console.log(selectedImage);
+    console.log(pickedLocation);
   }
 
   return (
@@ -35,7 +35,7 @@ function PlaceForm() {
         <Text style={styles.label}></Text>
         <TextInput
           style={styles.input}
-          onChange={newText => setEnteredTitle(newText)}
+          onChangeText={changeTitleHandler}
           value={enteredTitle}
         />
       </View>
