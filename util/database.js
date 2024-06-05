@@ -100,8 +100,15 @@ export function fetchPlaceDetails(id) {
         "SELECT * FROM places WHERE id = ?",
         [id],
         (_, result) => {
-          console.log("ooo ",result.rows_array[0]);
-          resolve(result.rows_array[0]);
+          const dbPlace = result.rows_array[0];
+          const place = new Place(
+            dbPlace.title,
+            dbPlace.imageUri,
+            { lat: dbPlace.lat, lng: dbPlace.lng, address: dbPlace.address },
+            dbPlace.id
+          );
+          console.log("ooo ", place);
+          resolve(place);
         },
         (_, error) => {
           reject(error);
